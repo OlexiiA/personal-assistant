@@ -1,7 +1,13 @@
 [project]
 name = "personal-assistant"
 version = "0.1.0"
-description = "Add your description here"
+description = "Take your personal assistant"
 readme = "README.md"
 requires-python = ">=3.14"
+authors = [
+    { name = "Ihor M.", email = "mukovoz.igor@gmail.com" },
+    { name = "Oleksii", email = "incretiblealex@gmail.com" },
+    { name = "", email = "" },
+    { name = "", email = "" },
+]
 dependencies = []
