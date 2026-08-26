@@ -16,6 +16,7 @@ def parse_input(user_input: str) -> tuple[str, list[str]]:
 def main():
     storage = PersistStorage()
     book: AddressBook = storage.load()
+    
     print("Welcome to the assistant bot!")
 
     while True:
@@ -46,6 +47,7 @@ def main():
             print(commands.show_birthday(args, book))
         elif command == "birthdays":
             print(commands.birthdays(book))
+    
         else:
             print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, close, exit")
 
