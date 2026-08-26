@@ -33,7 +33,7 @@ def edit_note(args: list[str], note: NoteBook) -> str:
     note_id, *text = args
     updated_note = note.edit_note_by_id(int(note_id), " ".join(text))
 
-    return "Note is updated." if updated_note else "Nothing changed. Note is not found."
+    return "Note updated." if updated_note else "Nothing changed. Note not found."
 
 @note_input_error
 def remove_note(args: list[str], note: NoteBook) -> str:
