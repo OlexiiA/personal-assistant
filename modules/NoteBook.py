@@ -1,12 +1,5 @@
-
-import uuid
-
 from modules.Errors import IncorrectNoteId
-
-class Note:
-    def __init__(self, note_id, text):
-        self.id = note_id
-        self.text = text
+from modules.Fields import Note
 
 class NoteBook:
     def __init__(self):
@@ -14,8 +7,8 @@ class NoteBook:
         self.next_id = 1
 
     def add_note(self, text):
-        note = Note(self.next_id, text)
-        self.notes[note.id] = note
+        note = Note(text)
+        self.notes[self.next_id] = note
         self.next_id += 1
         return note
 

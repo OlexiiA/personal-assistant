@@ -16,5 +16,9 @@ def input_error(func):
             return "Incorrect phone type. Should be digits only."
         except AppErrors.IncorrectBirthday:
             return "Incorrect birthday format. Should be dd.mm.yyyy."
+        except AppErrors.IncorrectNoteText:
+            return "Length for note has to be more then 0"
+        except AppErrors.IncorrectNoteId:
+            return "Note with ID is not found"
 
     return inner

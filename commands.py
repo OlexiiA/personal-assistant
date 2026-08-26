@@ -1,7 +1,7 @@
 from decorators.Input import input_error
 from modules.AddressBook import AddressBook
 from modules.Record import Record
-
+from modules.NoteBook import NoteBook, Note
 
 @input_error
 def add_contact(args: list[str], book: AddressBook) -> str:
@@ -85,3 +85,19 @@ def birthdays(book: AddressBook) -> str:
         return "No birthdays in the next week."
 
     return "\n".join(f"{u['name']}: {u['congratulation_date']}" for u in upcoming)
+
+@input_error
+def add_note(args: list[str], note: NoteBook) -> str:
+  
+    
+    text, *_ = args
+    new_note = Note(text)
+    note.add_note(new_note)
+    return "Note added."
+
+@input_error
+def show_all_notes(note: NoteBook) -> str:
+    if not note:
+        return "No notes saved."
+
+    return note.items()

@@ -2,7 +2,7 @@ import commands
 
 from modules.AddressBook import AddressBook
 from modules.PersistStorage import PersistStorage
-
+from modules.NoteBook import NoteBook
 
 def parse_input(user_input: str) -> tuple[str, list[str]]:
     parts = user_input.split()
@@ -16,7 +16,8 @@ def parse_input(user_input: str) -> tuple[str, list[str]]:
 def main():
     storage = PersistStorage()
     book: AddressBook = storage.load()
-    
+    notebook: NoteBook = NoteBook()
+
     print("Welcome to the assistant bot!")
 
     while True:
@@ -47,6 +48,10 @@ def main():
             print(commands.show_birthday(args, book))
         elif command == "birthdays":
             print(commands.birthdays(book))
+        elif command == "add-note":
+            print(commands.add_note(args, notebook))
+        elif command == "show-all-nones":
+            print(commands.show_all_notes(args, notebook))
     
         else:
             print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, close, exit")
