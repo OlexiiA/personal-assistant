@@ -52,6 +52,8 @@ def main():
             print(commands.add_note(args, notebook))
         elif command == "all-notes":
             print(commands.show_all_notes(notebook))
+        elif command == 'search-note':
+            print(commands.search_note(args, notebook))
     
         else:
             print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, close, exit")

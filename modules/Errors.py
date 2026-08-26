@@ -12,3 +12,6 @@ class IncorrectNoteText(Exception):
 
 class IncorrectNoteId(Exception):
     pass
+
+class IncorrectTextLength(Exception):
+    pass

@@ -98,3 +98,16 @@ def show_all_notes(note: NoteBook) -> str:
         return "No notes saved."
 
     return "\n".join(f"{id}: {text}" for id, text in note.show_notes())
+
+@input_error
+def search_note(args: list[str], note: NoteBook) -> str:
+    if not note.notes:
+        return "No notes saved."
+
+    text = " ".join(args)
+    matches = note.search_notes_by_text(text)
+
+    if not matches:
+        return "No notes found."
+
+    return "\n".join(f"{note_id}: {note}" for note_id, note in matches)
