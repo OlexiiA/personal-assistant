@@ -40,3 +40,6 @@ class Note:
 
         if not text:
             raise AppErrors.IncorrectNoteText
+
+    def __str__(self):
+        return self.text

@@ -50,8 +50,8 @@ def main():
             print(commands.birthdays(book))
         elif command == "add-note":
             print(commands.add_note(args, notebook))
-        elif command == "show-all-nones":
-            print(commands.show_all_notes(args, notebook))
+        elif command == "all-notes":
+            print(commands.show_all_notes(notebook))
     
         else:
             print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, close, exit")

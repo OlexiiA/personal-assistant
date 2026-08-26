@@ -88,11 +88,8 @@ def birthdays(book: AddressBook) -> str:
 
 @input_error
 def add_note(args: list[str], note: NoteBook) -> str:
-  
-    
-    text, *_ = args
-    new_note = Note(text)
-    note.add_note(new_note)
+    text = args[0] if args else ""
+    note.add_note(text)
     return "Note added."
 
 @input_error
@@ -100,4 +97,4 @@ def show_all_notes(note: NoteBook) -> str:
     if not note:
         return "No notes saved."
 
-    return note.items()
+    return "\n".join(f"{id}: {text}" for id, text in note.show_notes())

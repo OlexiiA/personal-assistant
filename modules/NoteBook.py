@@ -13,7 +13,7 @@ class NoteBook:
         return note
 
     def show_notes(self):
-        return list(self.notes.values())
+        return self.notes.items()
 
     def search_notes_by_text(self, text):
         if len(text) < 3:
