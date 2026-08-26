@@ -3,13 +3,17 @@ import pickle
 from modules.AddressBook import AddressBook
 
 
-def save_data(book, filename="addressbook.pkl"):
-    with open(filename, "wb") as f:
-        pickle.dump(book, f)
+class PersistStorage:
+    def __init__(self, filename: str = "addressbook.pkl") -> None:
+        self.filename = filename
 
-def load_data(filename="addressbook.pkl"):
-    try:
-        with open(filename, "rb") as f:
-            return pickle.load(f)
-    except FileNotFoundError:
-        return AddressBook()
+    def save(self, book: AddressBook) -> None:
+        with open(self.filename, "wb") as f:
+            pickle.dump(book, f)
+
+    def load(self) -> AddressBook:
+        try:
+            with open(self.filename, "rb") as f:
+                return pickle.load(f)
+        except FileNotFoundError:
+            return AddressBook()

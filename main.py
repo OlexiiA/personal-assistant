@@ -1,6 +1,6 @@
 from decorators.Input import input_error
 from modules.AddressBook import AddressBook
-from modules.PersistStorage import load_data, save_data
+from modules.PersistStorage import PersistStorage
 from modules.Record import Record
 
 def parse_input(user_input: str) -> tuple[str, list[str]]:
@@ -96,7 +96,8 @@ def birthdays(book: AddressBook) -> str:
 
 
 def main():
-    book: AddressBook = load_data()
+    storage = PersistStorage()
+    book: AddressBook = storage.load()
     print("Welcome to the assistant bot!")
 
     while True:
@@ -104,7 +105,7 @@ def main():
         command, args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            save_data(book)
+            storage.save(book)
             print("Good bye!")
             break
         elif command == "hello":
