@@ -23,18 +23,20 @@ class NoteBook:
         return [
             (note_id, note)
             for note_id, note in self.notes.items()
-            if search_text in note.text.lower()
+            if search_text in note.value.lower()
         ]
         
-
     def edit_note_by_id(self, note_id, new_text):
-        if note_id in self.notes:
-            self.notes[note_id].text = new_text
-        else:
-            raise AppErrors.IncorrectNoteId(f"Note with ID {note_id} not found.")
+        if note_id not in self.notes:
+            raise AppErrors.IncorrectNoteId(f"Note with ID {note_id} is not found.")
+
+        updated_note = Note(new_text)
+        self.notes[note_id] = updated_note
+        return updated_note
 
     def remove_note_by_id(self, note_id):
-        if note_id in self.notes:
-            del self.notes[note_id]
-        else:
-            raise AppErrors.IncorrectNoteId(f"Note with ID {note_id} not found.")
+        if note_id not in self.notes:
+            raise AppErrors.IncorrectNoteId(f"Note with ID {note_id} is not found.")
+
+        del self.notes[note_id]
+        return self.notes
