@@ -37,9 +37,6 @@ def edit_note(args: list[str], note: NoteBook) -> str:
 
 @note_input_error
 def remove_note(args: list[str], note: NoteBook) -> str:
-    note_id = args
-    try:
-        note.remove_note_by_id(int(note_id))
-        return f"Note {note_id} was deleted successfullly."
-    except:
-        AppErrors.IncorrectNoteId()
+    note_id = int(args[0])
+    note.remove_note_by_id(note_id)
+    return f"Note {note_id} was deleted successfully."
