@@ -28,7 +28,7 @@ class NoteBook:
         
     def edit_note_by_id(self, note_id, new_text):
         if note_id not in self.notes:
-            raise AppErrors.IncorrectNoteId(f"Note with ID {note_id} is not found.")
+            raise AppErrors.IncorrectNoteId()
 
         updated_note = Note(new_text)
         self.notes[note_id] = updated_note
@@ -36,7 +36,7 @@ class NoteBook:
 
     def remove_note_by_id(self, note_id):
         if note_id not in self.notes:
-            raise AppErrors.IncorrectNoteId(f"Note with ID {note_id} is not found.")
+            raise AppErrors.IncorrectNoteId()
 
         del self.notes[note_id]
         return self.notes

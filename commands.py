@@ -2,6 +2,7 @@ from decorators.Input import input_error
 from modules.AddressBook import AddressBook
 from modules.Record import Record
 
+
 @input_error
 def add_contact(args: list[str], book: AddressBook) -> str:
     name, phone, *_ = args
@@ -30,7 +31,7 @@ def change_contact(args: list[str], book: AddressBook) -> str:
 
     res = contact.edit_phone(phone, new_phone)
 
-    return "Contact updated." if res else "Nothin' changed. Phone not found."
+    return "Contact updated." if res else "Nothing changed. Phone not found."
 
 
 @input_error

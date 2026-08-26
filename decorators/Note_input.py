@@ -5,16 +5,16 @@ def note_input_error(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Give me note please"
+            return "Please provide note text."
         except KeyError:
-            return "Contact not found."
+            return "Note not found."
         except IndexError:
-            return "Enter the argument for the command."
+            return "Please provide the required arguments for the command."
         except AppErrors.IncorrectNoteText:
-            return "Length for note has to be more then 0."
+            return "Note text cannot be empty."
         except AppErrors.IncorrectNoteId:
-            return "Note with such ID is not found."
+            return "Note with this ID was not found."
         except AppErrors.IncorrectTextLength:
-            return "Minimum search length for notes is 3 characters."
+            return "Search text must be at least 3 characters long."
 
     return inner
