@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 
 from modules.Record import Record
 
+
 class AddressBook(UserDict):
     def add_record(self, record: Record):
         self.data[record.name.value] = record
@@ -21,7 +22,13 @@ class AddressBook(UserDict):
             if not record.birthday:
                 continue
 
-            birthday_this_year = record.birthday.value.replace(year=today.year)
+            try:
+                birthday_this_year = record.birthday.value.replace(year=today.year)
+            except ValueError:
+                birthday_this_year = record.birthday.value.replace(
+                    year=today.year,
+                    day=28,
+                )
 
             if birthday_this_year < today:
                 birthday_this_year = birthday_this_year.replace(year=today.year + 1)

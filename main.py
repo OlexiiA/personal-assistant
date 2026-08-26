@@ -3,6 +3,7 @@ from modules.AddressBook import AddressBook
 from modules.PersistStorage import PersistStorage
 from modules.Record import Record
 
+
 def parse_input(user_input: str) -> tuple[str, list[str]]:
     parts = user_input.split()
     if not parts:
@@ -20,12 +21,11 @@ def add_contact(args: list[str], book: AddressBook) -> str:
 
     if record is None:
         record = Record(name)
-        book.add_record(record)
-        message = "Contact added."
-
-    if phone:
         record.add_phone(phone)
+        book.add_record(record)
+        return "Contact added."
 
+    record.add_phone(phone)
     return message
 
 
@@ -44,10 +44,11 @@ def change_contact(args: list[str], book: AddressBook) -> str:
 
 
 @input_error
-def show_phone(args: list[str], book: AddressBook) -> Record | None:
+def show_phone(args: list[str], book: AddressBook) -> Record | str:
     name = args[0]
+    record = book.find(name)
 
-    return book.find(name)
+    return record if record else "Contact not found."
 
 
 @input_error
@@ -101,11 +102,15 @@ def main():
     print("Welcome to the assistant bot!")
 
     while True:
-        user_input = input("Enter a command: ")
+        try:
+            user_input = input("Enter a command: ")
+        except (EOFError, KeyboardInterrupt):
+            print("\nGood bye!")
+            break
+
         command, args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            storage.save(book)
             print("Good bye!")
             break
         elif command == "hello":
@@ -126,6 +131,8 @@ def main():
             print(birthdays(book))
         else:
             print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, close, exit")
+
+    storage.save(book)
 
 
 if __name__ == "__main__":
