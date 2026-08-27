@@ -39,5 +39,7 @@ class Note(Field):
         super().__init__(value)
 
         if not value:
-            raise AppErrors.IncorrectNoteText
+            raise AppErrors.IncorrectNoteText()
+
+        
         
