@@ -1,6 +1,5 @@
 from decorators.Note_input import note_input_error
 from modules.NoteBook import NoteBook
-import modules.Errors as AppErrors
 
 @note_input_error
 def add_note(args: list[str], note: NoteBook) -> str:
@@ -10,10 +9,10 @@ def add_note(args: list[str], note: NoteBook) -> str:
 
 @note_input_error
 def show_all_notes(note: NoteBook) -> str:
-    if not note:
+    if not note.notes:
         return "No notes saved."
 
-    return "\n".join(f"{id}: {text}" for id, text in note.show_notes())
+    return "\n".join(f"{note_id}: {text}" for note_id, text in note.show_notes())
 
 @note_input_error
 def search_note(args: list[str], note: NoteBook) -> str:
@@ -31,9 +30,9 @@ def search_note(args: list[str], note: NoteBook) -> str:
 @note_input_error
 def edit_note(args: list[str], note: NoteBook) -> str:
     note_id, *text = args
-    updated_note = note.edit_note_by_id(int(note_id), " ".join(text))
+    note.edit_note_by_id(int(note_id), " ".join(text))
 
-    return "Note updated." if updated_note else "Nothing changed. Note not found."
+    return "Note updated."
 
 @note_input_error
 def remove_note(args: list[str], note: NoteBook) -> str:

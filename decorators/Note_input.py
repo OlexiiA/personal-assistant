@@ -5,7 +5,7 @@ def note_input_error(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Please provide note text."
+            return "Invalid arguments. Check note ID and/or text."
         except KeyError:
             return "Note not found."
         except IndexError:
