@@ -68,7 +68,7 @@ def main():
         elif command == 'remove-note':
             print(note_commands.remove_note(args, notebook))
         else:
-            print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, add-note, all-notes, search-note, edit-note, remove-note, close, exit")
+            print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, add-email, edit-email, add-address, edit-address, add-note, all-notes, search-note, edit-note, remove-note, close, exit")
 
     storage.save(book)
 

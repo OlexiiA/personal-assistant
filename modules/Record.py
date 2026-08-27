@@ -37,13 +37,23 @@ class Record:
         self.email = Email(value)
 
     def edit_email(self, new_email: str):
-        self.email.value = Email(new_email)
+        if self.email is None:
+            self.email = Email(new_email)
+            return True
+
+        self.email = Email(new_email)
+        return True
     
     def add_address(self, value: str):
         self.address = Address(value)
 
     def edit_address(self, address: str):
-        self.email = Address(address)
+        if self.address is None:
+            self.Address = Address(address)
+            return True
+
+        self.Address = Address(address)
+        return True
 
     def __str__(self):
         birthday_part = f", birthday: {self.birthday}" if self.birthday else ""
