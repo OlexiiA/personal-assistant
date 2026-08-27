@@ -7,7 +7,7 @@ requires-python = ">=3.14"
 authors = [
     { name = "Ihor M.", email = "mukovoz.igor@gmail.com" },
     { name = "Oleksii", email = "incretiblealex@gmail.com" },
-    { name = "", email = "" },
+    { name = "Myroslava", email = "myroslava.hnatiuk@ukr.net" },
     { name = "", email = "" },
 ]
 dependencies = []

@@ -31,7 +31,7 @@ def change_contact(args: list[str], book: AddressBook) -> str:
 
     res = contact.edit_phone(phone, new_phone)
 
-    return "Contact updated." if res else "Nothin' changed. Phone not found."
+    return "Contact updated." if res else "Nothing changed. Phone not found."
 
 
 @input_error

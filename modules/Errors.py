@@ -9,3 +9,12 @@ class IncorrectBirthday(Exception):
 
 class IncorrectEmail(Exception):
     pass
+
+class IncorrectNoteText(Exception):
+    pass
+
+class IncorrectNoteId(Exception):
+    pass
+
+class IncorrectTextLength(Exception):
+    pass

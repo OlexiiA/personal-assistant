@@ -35,7 +35,6 @@ class Phone(Field):
         elif len(value) != 10:
             raise AppErrors.IncorrectPhoneLength()
 
-
 class Email(Field):
     EMAIL_PATTERN = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
 
@@ -50,3 +49,13 @@ class Email(Field):
 
     def __str__(self):
         return str(self.value)
+    
+class Note(Field):
+    def __init__(self, value):
+        super().__init__(value)
+
+        if not value:
+            raise AppErrors.IncorrectNoteText()
+
+        
+        
