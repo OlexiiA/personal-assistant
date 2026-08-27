@@ -6,3 +6,12 @@ class IncorrectPhoneLength(Exception):
 
 class IncorrectBirthday(Exception):
     pass
+
+class IncorrectNoteText(Exception):
+    pass
+
+class IncorrectNoteId(Exception):
+    pass
+
+class IncorrectTextLength(Exception):
+    pass

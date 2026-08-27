@@ -33,3 +33,13 @@ class Phone(Field):
             raise AppErrors.IncorrectPhoneNumber()
         elif len(value) != 10:
             raise AppErrors.IncorrectPhoneLength()
+
+class Note(Field):
+    def __init__(self, value):
+        super().__init__(value)
+
+        if not value:
+            raise AppErrors.IncorrectNoteText()
+
+        
+        
