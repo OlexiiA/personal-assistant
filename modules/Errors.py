@@ -6,3 +6,6 @@ class IncorrectPhoneLength(Exception):
 
 class IncorrectBirthday(Exception):
     pass
+
+class IncorrectEmail(Exception):
+    pass

@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 
 import modules.Errors as AppErrors
@@ -33,3 +34,19 @@ class Phone(Field):
             raise AppErrors.IncorrectPhoneNumber()
         elif len(value) != 10:
             raise AppErrors.IncorrectPhoneLength()
+
+
+class Email(Field):
+    EMAIL_PATTERN = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+
+    def __init__(self, value):
+        if not isinstance(value, str):
+            raise AppErrors.IncorrectEmail()
+
+        if not re.fullmatch(self.EMAIL_PATTERN, value):
+            raise AppErrors.IncorrectEmail()
+
+        super().__init__(value)
+
+    def __str__(self):
+        return str(self.value)
