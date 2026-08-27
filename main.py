@@ -53,6 +53,10 @@ def main():
             print(commands.add_email(args, book))
         elif command == "edit-email":
             print(commands.edit_email(args, book))
+        elif command == "add-address":
+            print(commands.add_address(args, book))
+        elif command == "edit-address":
+            print(commands.edit_address(args, book))
         elif command == "add-note":
             print(note_commands.add_note(args, notebook))
         elif command == "all-notes":

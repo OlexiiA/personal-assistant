@@ -49,6 +49,9 @@ class Email(Field):
 
     def __str__(self):
         return str(self.value)
+
+class Address(Field):
+    pass
     
 class Note(Field):
     def __init__(self, value):

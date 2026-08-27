@@ -46,9 +46,11 @@ def show_phone(args: list[str], book: AddressBook) -> Record | str:
 def show_all(book: AddressBook) -> str:
     if not book:
         return "No contacts saved."
-
-    return "\n".join(f"{name}: {record}" for name, record in book.items())
-
+    result = []
+    for name, record in book.items():
+        phones = [phone.value for phone in record.phones]
+        result.append(f"{name}: {', '.join(phones)}, Birthday: {record.birthday}, Email: {record.email}")
+    return "\n".join(result)
 
 @input_error
 def add_birthday(args: list[str], book: AddressBook) -> str:
@@ -100,13 +102,38 @@ def add_email(args: list[str], book: AddressBook) -> str:
 
 @input_error
 def edit_email(args: list[str], book: AddressBook) -> str:
-    name, old_email, new_email = args
+    name, new_email = args
 
     contact = book.find(name)
 
     if not contact:
         return "Contact not found."
 
-    res = contact.edit_email(old_email, new_email)
+    res = contact.edit_email(new_email)
 
     return "Contact updated." if res else "Nothing changed. Email not found."
+
+@input_error
+def add_address(args: list[str], book: AddressBook) -> str:
+    name, address = args
+
+    record = book.find(name)
+    if not record:
+        return "Contact not found."
+
+    record.add_address(address)
+
+    return "Address added."
+
+@input_error
+def edit_address(args: list[str], book: AddressBook) -> str:
+    name, address = args
+
+    contact = book.find(name)
+
+    if not contact:
+        return "Contact not found."
+
+    res = contact.edit_address(address)
+
+    return "Contact updated." if res else "Nothing changed. Address not found."
