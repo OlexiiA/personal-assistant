@@ -49,6 +49,10 @@ def main():
             print(commands.show_birthday(args, book))
         elif command == "birthdays":
             print(commands.birthdays(book))
+        elif command == "add-email":
+            print(commands.add_email(args, book))
+        elif command == "edit-email":
+            print(commands.edit_email(args, book))
         elif command == "add-note":
             print(note_commands.add_note(args, notebook))
         elif command == "all-notes":

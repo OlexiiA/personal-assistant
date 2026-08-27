@@ -85,3 +85,28 @@ def birthdays(book: AddressBook) -> str:
         return "No birthdays in the next week."
 
     return "\n".join(f"{u['name']}: {u['congratulation_date']}" for u in upcoming)
+
+@input_error
+def add_email(args: list[str], book: AddressBook) -> str:
+    name, email = args
+
+    record = book.find(name)
+    if not record:
+        return "Contact not found."
+
+    record.add_email(email)
+
+    return "Email added."
+
+@input_error
+def edit_email(args: list[str], book: AddressBook) -> str:
+    name, old_email, new_email = args
+
+    contact = book.find(name)
+
+    if not contact:
+        return "Contact not found."
+
+    res = contact.edit_email(old_email, new_email)
+
+    return "Contact updated." if res else "Nothing changed. Email not found."
