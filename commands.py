@@ -87,11 +87,21 @@ def show_birthday(args: list[str], book: AddressBook) -> str:
 
 
 @input_error
-def birthdays(book: AddressBook) -> str:
-    upcoming = book.get_upcoming_birthdays()
+def birthdays(args: list[str], book: AddressBook) -> str:
+    if len(args) != 1:
+        return "Enter one positive number of days."
+
+    if not args[0].isdigit():
+        return "Number of days must be a positive integer."
+
+    days = int(args[0])
+    if days <= 0:
+        return "Number of days must be greater than zero."
+
+    upcoming = book.get_upcoming_birthdays(days)
 
     if not upcoming:
-        return "No birthdays in the next week."
+        return f"No birthdays in the next {days} days."
 
     return "\n".join(f"{u['name']}: {u['congratulation_date']}" for u in upcoming)
 

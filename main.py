@@ -48,7 +48,7 @@ def main():
         elif command == "show-birthday":
             print(commands.show_birthday(args, book))
         elif command == "birthdays":
-            print(commands.birthdays(book))
+            print(commands.birthdays(args, book))
         elif command == "add-email":
             print(commands.add_email(args, book))
         elif command == "edit-email":

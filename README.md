@@ -25,7 +25,7 @@ Main features:
 - [ ] Check the email format.
 - [ ] Search contacts by different fields.
 - [ ] Edit and delete full contact records.
-- [ ] Select the number of days for the birthday list.
+- [x] Select the number of days for the birthday list.
 - [ ] Add, search, edit, and delete text notes.
 - [ ] Save contacts and notes in the user's home folder.
 
@@ -81,7 +81,7 @@ uv run python main.py
 | `all` | `all` | Show all contacts. |
 | `add-birthday` | `add-birthday Alice 25.12.2000` | Add a birthday. |
 | `show-birthday` | `show-birthday Alice` | Show a birthday. |
-| `birthdays` | `birthdays` | Show birthdays for the next 7 days. |
+| `birthdays` | `birthdays 14` | Show birthdays for the selected number of days. |
 | `exit` | `exit` | Save data and close the program. |
 | `close` | `close` | Save data and close the program. |
 
