@@ -48,8 +48,15 @@ def show_all(book: AddressBook) -> str:
         return "No contacts saved."
     result = []
     for name, record in book.items():
-        phones = [phone.value for phone in record.phones]
-        result.append(f"{name}: {', '.join(phones)}, Birthday: {record.birthday}, Email: {record.email}, Address: {record.address}")
+        parts = [f"{name}: {', '.join(phone.value for phone in record.phones)}"]
+        if record.birthday:
+             parts.append(f"Birthday: {record.birthday}")
+        if record.email:
+             parts.append(f"Email: {record.email}")
+        if record.address:
+             parts.append(f"Address: {record.address}")
+        result.append(", ".join(parts))
+        
     return "\n".join(result)
 
 @input_error
@@ -109,10 +116,7 @@ def edit_email(args: list[str], book: AddressBook) -> str:
     if not contact:
         return "Contact not found."
 
-    try:
-        res = contact.edit_email(email)
-    except:
-        return "Enter the email to update."
+    res = contact.edit_email(email)
 
     return "Contact updated." if res else "Nothing changed. Email not found."
 
@@ -124,7 +128,7 @@ def add_address(args: list[str], book: AddressBook) -> str:
     if not record:
         return "Contact not found."
 
-    record.add_address(address)
+    record.add_address(" ".join(address))
 
     return "Address added."
 

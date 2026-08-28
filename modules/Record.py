@@ -49,10 +49,10 @@ class Record:
 
     def edit_address(self, address: str):
         if self.address is None:
-            self.Address = Address(address)
+            self.address = Address(address)
             return True
 
-        self.Address = Address(address)
+        self.address = Address(address)
         return True
 
     def __str__(self):

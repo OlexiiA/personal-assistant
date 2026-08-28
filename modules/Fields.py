@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
-
 import modules.Errors as AppErrors
+from pydantic import BaseModel, EmailStr, ValidationError
 
 
 class Field:
@@ -35,15 +35,20 @@ class Phone(Field):
         elif len(value) != 10:
             raise AppErrors.IncorrectPhoneLength()
 
-class Email(Field):
-    EMAIL_PATTERN = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+class _EmailModel(BaseModel):
+    value: EmailStr
 
+class Email(Field):
     def __init__(self, value):
         if not isinstance(value, str):
             raise AppErrors.IncorrectEmail()
 
-        if not re.fullmatch(self.EMAIL_PATTERN, value):
+        try:
+            parsed = _EmailModel(value=value)
+        except ValidationError:
             raise AppErrors.IncorrectEmail()
+
+        super().__init__(parsed.value)
 
         super().__init__(value)
 
