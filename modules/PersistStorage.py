@@ -26,5 +26,5 @@ class PersistStorage:
         try:
             with open(self.filepath, "rb") as f:
                 return pickle.load(f)
-        except OSError:
+        except (FileNotFoundError, EOFError, pickle.UnpicklingError):
             return self.fallback_instance()
