@@ -141,6 +141,6 @@ def edit_address(args: list[str], book: AddressBook) -> str:
     if not contact:
         return "Contact not found."
 
-    res = contact.edit_address(address)
+    res = contact.edit_address(" ".join(address))
 
     return "Contact updated." if res else "Nothing changed. Address not found."
