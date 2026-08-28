@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 import modules.Errors as AppErrors
 
 def note_input_error(func):
@@ -5,16 +7,16 @@ def note_input_error(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Invalid arguments. Check note ID and/or text."
+            return Fore.RED + "Invalid arguments. Check note ID and/or text." + Style.RESET_ALL
         except KeyError:
-            return "Note not found."
+            return Fore.RED + "Note not found." + Style.RESET_ALL
         except IndexError:
-            return "Please provide the required arguments for the command."
+            return Fore.RED + "Please provide the required arguments for the command." + Style.RESET_ALL
         except AppErrors.IncorrectNoteText:
-            return "Note text cannot be empty."
+            return Fore.RED + "Note text cannot be empty." + Style.RESET_ALL
         except AppErrors.IncorrectNoteId:
-            return "Note with this ID was not found."
+            return Fore.RED + "Note with this ID was not found." + Style.RESET_ALL
         except AppErrors.IncorrectTextLength:
-            return "Search text must be at least 3 characters long."
+            return Fore.RED + "Search text must be at least 3 characters long." + Style.RESET_ALL
 
     return inner
