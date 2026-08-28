@@ -11,5 +11,5 @@ authors = [
     { name = "", email = "" },
 ]
 dependencies = [
-    "pydantic>=2.13.4",
+    "pydantic[email]>=2.13.4",
 ]
