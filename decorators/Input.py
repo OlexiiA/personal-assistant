@@ -1,11 +1,12 @@
 import modules.Errors as AppErrors
 
+
 def input_error(func):
     def inner(*args, **kwargs):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Give me name and phone please."
+            return "Give me name and value please."
         except KeyError:
             return "Contact not found."
         except IndexError:
@@ -16,5 +17,7 @@ def input_error(func):
             return "Incorrect phone type. Should be digits only."
         except AppErrors.IncorrectBirthday:
             return "Incorrect birthday format. Should be dd.mm.yyyy."
+        except AppErrors.IncorrectEmail:
+            return "Incorrect email format. Please enter a valid email address."
 
     return inner

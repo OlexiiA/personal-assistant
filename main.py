@@ -49,6 +49,14 @@ def main():
             print(commands.show_birthday(args, book))
         elif command == "birthdays":
             print(commands.birthdays(book))
+        elif command == "add-email":
+            print(commands.add_email(args, book))
+        elif command == "edit-email":
+            print(commands.edit_email(args, book))
+        elif command == "add-address":
+            print(commands.add_address(args, book))
+        elif command == "edit-address":
+            print(commands.edit_address(args, book))
         elif command == "add-note":
             print(note_commands.add_note(args, notebook))
         elif command == "all-notes":
@@ -60,7 +68,7 @@ def main():
         elif command == 'remove-note':
             print(note_commands.remove_note(args, notebook))
         else:
-            print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, add-note, all-notes, search-note, edit-note, remove-note, close, exit")
+            print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, add-email, edit-email, add-address, edit-address, add-note, all-notes, search-note, edit-note, remove-note, close, exit")
 
     storage.save(book)
 

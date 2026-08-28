@@ -1,6 +1,7 @@
+import re
 from datetime import datetime
-
 import modules.Errors as AppErrors
+from pydantic import BaseModel, EmailStr, ValidationError
 
 
 class Field:
@@ -34,6 +35,29 @@ class Phone(Field):
         elif len(value) != 10:
             raise AppErrors.IncorrectPhoneLength()
 
+class _EmailModel(BaseModel):
+    value: EmailStr
+
+class Email(Field):
+    def __init__(self, value):
+        if not isinstance(value, str):
+            raise AppErrors.IncorrectEmail()
+
+        try:
+            parsed = _EmailModel(value=value)
+        except ValidationError:
+            raise AppErrors.IncorrectEmail()
+
+        super().__init__(parsed.value)
+
+        super().__init__(value)
+
+    def __str__(self):
+        return str(self.value)
+
+class Address(Field):
+    pass
+    
 class Note(Field):
     def __init__(self, value):
         super().__init__(value)

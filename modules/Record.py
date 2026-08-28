@@ -1,4 +1,4 @@
-from modules.Fields import Name, Phone, Birthday
+from modules.Fields import Name, Phone, Birthday, Email, Address
 
 
 class Record:
@@ -6,6 +6,8 @@ class Record:
         self.name: Name = Name(name)
         self.phones: list[Phone] = []
         self.birthday: Birthday | None = None
+        self.email: Email | None = None
+        self.address: Address | None = None
 
     def add_phone(self, phone: str):
         self.phones.append(Phone(phone))
@@ -30,6 +32,24 @@ class Record:
 
     def add_birthday(self, date: str):
         self.birthday = Birthday(date)
+
+    def add_email(self, value: str):
+        self.email = Email(value)
+
+    def edit_email(self, new_email: str):
+        if self.email is None:
+            self.email = Email(new_email)
+            return True
+
+        self.email = Email(new_email)
+        return True
+    
+    def add_address(self, value: str):
+        self.address = Address(value)
+
+    def edit_address(self, address: str):
+        self.address = Address(address)
+        return True
 
     def __str__(self):
         birthday_part = f", birthday: {self.birthday}" if self.birthday else ""
