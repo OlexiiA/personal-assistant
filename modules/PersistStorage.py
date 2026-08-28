@@ -1,19 +1,30 @@
 import pickle
 
+from pathlib import Path
+from typing import Callable, Union
+
 from modules.AddressBook import AddressBook
+from modules.NoteBook import NoteBook
+
+Storable = Union[AddressBook, NoteBook]
+
+APP_DIR = Path.home() / ".personal-assistant"
 
 
 class PersistStorage:
-    def __init__(self, filename: str = "addressbook.pkl") -> None:
-        self.filename = filename
+    def __init__(self, filename: str, fallback_instance: Callable[[], Storable]) -> None:
+        self.filepath = APP_DIR / filename
+        self.fallback_instance = fallback_instance
 
-    def save(self, book: AddressBook) -> None:
-        with open(self.filename, "wb") as f:
-            pickle.dump(book, f)
+    def save(self, instance: Storable) -> None:
+        APP_DIR.mkdir(parents=True, exist_ok=True)
 
-    def load(self) -> AddressBook:
+        with open(self.filepath, "wb") as f:
+            pickle.dump(instance, f)
+
+    def load(self) -> Storable:
         try:
-            with open(self.filename, "rb") as f:
+            with open(self.filepath, "rb") as f:
                 return pickle.load(f)
-        except FileNotFoundError:
-            return AddressBook()
+        except OSError:
+            return self.fallback_instance()
