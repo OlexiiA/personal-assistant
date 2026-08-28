@@ -48,10 +48,6 @@ class Record:
         self.address = Address(value)
 
     def edit_address(self, address: str):
-        if self.address is None:
-            self.address = Address(address)
-            return True
-
         self.address = Address(address)
         return True
 
