@@ -10,4 +10,6 @@ authors = [
     { name = "Myroslava", email = "myroslava.hnatiuk@ukr.net" },
     { name = "", email = "" },
 ]
-dependencies = []
+dependencies = [
+    "pydantic>=2.13.4",
+]
