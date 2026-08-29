@@ -15,9 +15,11 @@ def parse_input(user_input: str) -> tuple[str, list[str]]:
 
 
 def main():
-    storage = PersistStorage()
-    book: AddressBook = storage.load()
-    notebook: NoteBook = NoteBook()
+    book_storage = PersistStorage("addressbook.pkl", AddressBook)
+    book: AddressBook = book_storage.load()
+
+    note_storage = PersistStorage("notebook.pkl", NoteBook)
+    notebook: NoteBook = note_storage.load()
 
     print("Welcome to the assistant bot!")
 
@@ -70,7 +72,8 @@ def main():
         else:
             print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, add-email, edit-email, add-address, edit-address, add-note, all-notes, search-note, edit-note, remove-note, close, exit")
 
-    storage.save(book)
+    book_storage.save(book)
+    note_storage.save(notebook)
 
 
 if __name__ == "__main__":
