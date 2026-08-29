@@ -141,15 +141,18 @@ def show_birthday(args: list[str], book: AddressBook) -> str:
 
 @input_error
 def birthdays(args: list[str], book: AddressBook) -> str:
-    if len(args) != 1:
-        return Fore.RED + "Enter one positive number of days." + Style.RESET_ALL
+    if len(args) > 1:
+        return Fore.RED + "Enter only one number of days." + Style.RESET_ALL
 
-    if not args[0].isdigit():
-        return Fore.RED + "Number of days must be a positive integer." + Style.RESET_ALL
+    days = 7
 
-    days = int(args[0])
-    if days <= 0:
-        return Fore.RED + "Number of days must be greater than zero." + Style.RESET_ALL
+    if args:
+        if not args[0].isdigit():
+            return Fore.RED + "Number of days must be a positive integer." + Style.RESET_ALL
+
+        days = int(args[0])
+        if days <= 0:
+            return Fore.RED + "Number of days must be greater than zero." + Style.RESET_ALL
 
     upcoming = book.get_upcoming_birthdays(days)
 
