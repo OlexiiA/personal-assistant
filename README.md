@@ -21,12 +21,13 @@ Main features:
 - [x] Check the birthday format.
 - [x] Show a clear message for wrong input.
 - [x] Save contacts and load them after restart.
-- [ ] Add an address and email to a contact.
-- [ ] Check the email format.
+- [x] Show contacts, birthdays, and notes in colored tables.
+- [x] Add an address and email to a contact.
+- [x] Check the email format.
 - [ ] Search contacts by different fields.
-- [ ] Edit and delete full contact records.
+- [x] Edit and delete full contact records.
 - [ ] Select the number of days for the birthday list.
-- [ ] Add, search, edit, and delete text notes.
+- [x] Add, search, edit, and delete text notes.
 - [ ] Save contacts and notes in the user's home folder.
 
 Optional features:
@@ -39,7 +40,7 @@ Optional features:
 
 - Python 3.14 or newer.
 - Git, if you want to clone the project.
-- No external Python packages are needed now.
+- Dependencies are installed from `pyproject.toml`.
 
 ## Installation
 
@@ -77,11 +78,22 @@ uv run python main.py
 | `hello` | `hello` | Show a welcome answer. |
 | `add` | `add Alice 0123456789` | Add a contact or add a phone to a contact. |
 | `change` | `change Alice 0123456789 0987654321` | Change a phone number. |
+| `edit-name` | `edit-name Alice Alicia` | Change a contact name. |
+| `remove-contact` | `remove-contact Alice` | Delete a full contact record. |
 | `phone` | `phone Alice` | Show a contact and phone numbers. |
 | `all` | `all` | Show all contacts. |
 | `add-birthday` | `add-birthday Alice 25.12.2000` | Add a birthday. |
 | `show-birthday` | `show-birthday Alice` | Show a birthday. |
 | `birthdays` | `birthdays` | Show birthdays for the next 7 days. |
+| `add-email` | `add-email Alice alice@example.com` | Add an email to a contact. |
+| `edit-email` | `edit-email Alice new@example.com` | Change a contact email. |
+| `add-address` | `add-address Alice Kyiv Main Street 1` | Add an address to a contact. |
+| `edit-address` | `edit-address Alice Lviv Shevchenka Street 10` | Change a contact address. |
+| `add-note` | `add-note Buy-milk` | Add a new note. |
+| `all-notes` | `all-notes` | Show all notes. |
+| `search-note` | `search-note milk` | Search notes by text. |
+| `edit-note` | `edit-note 1 Buy milk today` | Change a note by its ID. |
+| `remove-note` | `remove-note 1` | Delete a note by its ID. |
 | `exit` | `exit` | Save data and close the program. |
 | `close` | `close` | Save data and close the program. |
 
