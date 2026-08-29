@@ -12,6 +12,9 @@ class Record:
     def add_phone(self, phone: str):
         self.phones.append(Phone(phone))
 
+    def edit_name(self, new_name: str):
+        self.name = Name(new_name)
+
     def edit_phone(self, phone: str, new_phone: str):
         for i, p in enumerate(self.phones):
             if p.value == phone:

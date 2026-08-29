@@ -1,9 +1,13 @@
 import commands
 import note_commands
+from colorama import Fore, Style, init
 
 from modules.AddressBook import AddressBook
 from modules.PersistStorage import PersistStorage
 from modules.NoteBook import NoteBook
+
+
+init(autoreset=True)
 
 def parse_input(user_input: str) -> tuple[str, list[str]]:
     parts = user_input.split()
@@ -15,30 +19,39 @@ def parse_input(user_input: str) -> tuple[str, list[str]]:
 
 
 def main():
-    storage = PersistStorage()
-    book: AddressBook = storage.load()
-    notebook: NoteBook = NoteBook()
+    book_storage = PersistStorage("addressbook.pkl", AddressBook)
+    book: AddressBook = book_storage.load()
 
-    print("Welcome to the assistant bot!")
+    note_storage = PersistStorage("notebook.pkl", NoteBook)
+    notebook: NoteBook = note_storage.load()
+
+    print(Fore.CYAN + Style.BRIGHT + "=" * 38)
+    print(Fore.CYAN + Style.BRIGHT + "       PERSONAL ASSISTANT")
+    print(Fore.CYAN + Style.BRIGHT + "=" * 38)
+    print(Fore.GREEN + "Welcome! Type a command to get started.")
 
     while True:
         try:
-            user_input = input("Enter a command: ")
+            user_input = input(Fore.YELLOW + "\nEnter a command: " + Style.RESET_ALL)
         except (EOFError, KeyboardInterrupt):
-            print("\nGood bye!")
+            print(Fore.MAGENTA + "\nGood bye!")
             break
 
         command, args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            print("Good bye!")
+            print(Fore.MAGENTA + "Good bye!")
             break
         elif command == "hello":
-            print("How can I help you?")
+            print(Fore.GREEN + "How can I help you?")
         elif command == "add":
             print(commands.add_contact(args, book))
         elif command == "change":
             print(commands.change_contact(args, book))
+        elif command == "edit-name":
+            print(commands.edit_name(args, book))
+        elif command == "remove-contact":
+            print(commands.remove_contact(args, book))
         elif command == "phone":
             print(commands.show_phone(args, book))
         elif command == "all":
@@ -68,9 +81,15 @@ def main():
         elif command == 'remove-note':
             print(note_commands.remove_note(args, notebook))
         else:
-            print("Invalid command. Available commands: hello, add, change, phone, all, add-birthday, show-birthday, birthdays, add-email, edit-email, add-address, edit-address, add-note, all-notes, search-note, edit-note, remove-note, close, exit")
+            print(Fore.RED + "Invalid command.")
+            print(Fore.YELLOW + "Available commands:")
+            print("hello, add, change, edit-name, remove-contact, phone, all,")
+            print("add-birthday, show-birthday,")
+            print("birthdays, add-email, edit-email, add-address, edit-address,")
+            print("add-note, all-notes, search-note, edit-note, remove-note, close, exit")
 
-    storage.save(book)
+    book_storage.save(book)
+    note_storage.save(notebook)
 
 
 if __name__ == "__main__":
