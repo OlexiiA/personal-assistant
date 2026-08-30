@@ -9,8 +9,6 @@ from modules.persist_storage import PersistStorage
 from modules.note_book import NoteBook
 
 
-init(autoreset=True)
-
 COMMAND_EXAMPLES = [
     ("hello", "hello"),
     ("add", "add Alice 0123456789"),
@@ -54,6 +52,8 @@ def parse_input(user_input: str) -> tuple[str, list[str]]:
 
 
 def main():
+    init(autoreset=True)
+
     book_storage = PersistStorage("addressbook.pkl", AddressBook)
     book: AddressBook = book_storage.load()
 
