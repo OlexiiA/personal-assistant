@@ -140,15 +140,25 @@ def show_birthday(args: list[str], book: AddressBook) -> str:
 
 
 @input_error
-def birthdays(book: AddressBook) -> str:
-    upcoming = book.get_upcoming_birthdays()
+def birthdays(args: list[str], book: AddressBook) -> str:
+    days = 7
+
+    if args:
+        if not args[0].isdigit():
+            return Fore.RED + "Number of days must be a positive integer." + Style.RESET_ALL
+        days = int(args[0])
+
+    if days <= 0:
+        return Fore.RED + "Number of days must be greater than zero." + Style.RESET_ALL
+
+    upcoming = book.get_upcoming_birthdays(days)
 
     if not upcoming:
-        return Fore.RED + "No birthdays in the next week." + Style.RESET_ALL
+        return Fore.RED + f"No birthdays in the next {days} days." + Style.RESET_ALL
 
     rows = []
-    for birthday in upcoming:
-        rows.append([birthday["name"], birthday["congratulation_date"]])
+    for b in upcoming:
+        rows.append([b["name"], b["congratulation_date"]])
 
     headers = ["Name", "Congratulation date"]
     table = tabulate(rows, headers=headers, tablefmt="grid")
