@@ -94,6 +94,7 @@ uv run python main.py
 | `search-note`     | `search-note milk`                             | Search notes by text. |
 | `edit-note`       | `edit-note 1 Buy milk today`                   | Change a note by its ID. |
 | `remove-note`     | `remove-note 1`                                | Delete a note by its ID. |
+| `help`            | `help`                                         | Show all commands with examples. |
 | `exit`            | `exit`                                         | Save data and close the program. |
 | `close`           | `close`                                        | Save data and close the program. |
 

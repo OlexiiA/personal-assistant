@@ -3,6 +3,7 @@ from difflib import get_close_matches
 import commands
 import note_commands
 from colorama import Fore, Style, init
+from tabulate import tabulate
 
 from modules.AddressBook import AddressBook
 from modules.PersistStorage import PersistStorage
@@ -11,13 +12,38 @@ from modules.NoteBook import NoteBook
 
 init(autoreset=True)
 
-COMMANDS = [
-    "hello", "add", "change", "edit-name", "remove-contact", "phone", "all",
-    "add-birthday", "show-birthday", "birthdays", "search-contacts",
-    "add-email", "edit-email", "add-address", "edit-address",
-    "add-note", "all-notes", "search-note", "edit-note", "remove-note",
-    "close", "exit",
+COMMAND_EXAMPLES = [
+    ("hello", "hello"),
+    ("add", "add Alice 0123456789"),
+    ("change", "change Alice 0123456789 0987654321"),
+    ("edit-name", "edit-name Alice Alicia"),
+    ("remove-contact", "remove-contact Alice"),
+    ("phone", "phone Alice"),
+    ("all", "all"),
+    ("add-birthday", "add-birthday Alice 25.12.2000"),
+    ("show-birthday", "show-birthday Alice"),
+    ("birthdays", "birthdays 14"),
+    ("search-contacts", "search-contacts kyiv"),
+    ("add-email", "add-email Alice alice@example.com"),
+    ("edit-email", "edit-email Alice new@example.com"),
+    ("add-address", "add-address Alice Kyiv Main Street 1"),
+    ("edit-address", "edit-address Alice Lviv Shevchenka Street 10"),
+    ("add-note", "add-note Buy-milk"),
+    ("all-notes", "all-notes"),
+    ("search-note", "search-note milk"),
+    ("edit-note", "edit-note 1 Buy milk today"),
+    ("remove-note", "remove-note 1"),
+    ("help", "help"),
+    ("close", "close"),
+    ("exit", "exit"),
 ]
+
+COMMANDS = [name for name, _ in COMMAND_EXAMPLES]
+
+
+def show_help() -> str:
+    table = tabulate(COMMAND_EXAMPLES, headers=["Command", "Example"], tablefmt="grid")
+    return Fore.CYAN + table + Style.RESET_ALL
 
 def parse_input(user_input: str) -> tuple[str, list[str]]:
     parts = user_input.split()
@@ -54,6 +80,8 @@ def main():
             break
         elif command == "hello":
             print(Fore.GREEN + "How can I help you?")
+        elif command == "help":
+            print(show_help())
         elif command == "add":
             print(commands.add_contact(args, book))
         elif command == "change":
@@ -99,11 +127,7 @@ def main():
             if suggestions:
                 print(Fore.YELLOW + f"Did you mean '{suggestions[0]}'?")
             else:
-                print(Fore.YELLOW + "Available commands:")
-                print("hello, add, change, edit-name, remove-contact, phone, all,")
-                print("add-birthday, show-birthday,")
-                print("birthdays, search-contacts, add-email, edit-email, add-address, edit-address,")
-                print("add-note, all-notes, search-note, edit-note, remove-note, close, exit")
+                print(Fore.YELLOW + "Type 'help' to see available commands.")
 
     book_storage.save(book)
     note_storage.save(notebook)
