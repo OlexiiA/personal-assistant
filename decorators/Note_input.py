@@ -1,6 +1,6 @@
 from colorama import Fore, Style
 
-import modules.Errors as AppErrors
+import modules.errors as AppErrors
 
 def note_input_error(func):
     def inner(*args, **kwargs):

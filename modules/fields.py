@@ -1,5 +1,5 @@
 from datetime import datetime
-import modules.Errors as AppErrors
+import modules.errors as AppErrors
 from pydantic import BaseModel, EmailStr, ValidationError
 
 

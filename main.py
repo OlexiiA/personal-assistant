@@ -4,9 +4,9 @@ from commands import book_commands, note_commands
 from colorama import Fore, Style, init
 from tabulate import tabulate
 
-from modules.AddressBook import AddressBook
-from modules.PersistStorage import PersistStorage
-from modules.NoteBook import NoteBook
+from modules.address_book import AddressBook
+from modules.persist_storage import PersistStorage
+from modules.note_book import NoteBook
 
 
 init(autoreset=True)

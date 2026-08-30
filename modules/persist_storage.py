@@ -3,8 +3,8 @@ import pickle
 from pathlib import Path
 from typing import Callable, Union
 
-from modules.AddressBook import AddressBook
-from modules.NoteBook import NoteBook
+from modules.address_book import AddressBook
+from modules.note_book import NoteBook
 
 Storable = Union[AddressBook, NoteBook]
 

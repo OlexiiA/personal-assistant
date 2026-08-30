@@ -2,8 +2,8 @@ from colorama import Fore, Style
 from tabulate import tabulate
 
 from decorators.Input import input_error
-from modules.AddressBook import AddressBook
-from modules.Record import Record
+from modules.address_book import AddressBook
+from modules.record import Record
 
 
 def make_contacts_table(records: list[Record]) -> str:

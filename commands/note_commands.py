@@ -2,7 +2,7 @@ from colorama import Fore, Style
 from tabulate import tabulate
 
 from decorators.Note_input import note_input_error
-from modules.NoteBook import NoteBook
+from modules.note_book import NoteBook
 
 
 def make_notes_table(notes) -> str:

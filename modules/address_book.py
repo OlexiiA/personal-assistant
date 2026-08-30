@@ -1,7 +1,7 @@
 from collections import UserDict
 from datetime import datetime, timedelta
 
-from modules.Record import Record
+from modules.record import Record
 
 
 class AddressBook(UserDict):
