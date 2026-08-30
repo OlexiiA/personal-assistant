@@ -50,8 +50,6 @@ class Email(Field):
 
         super().__init__(parsed.value)
 
-        super().__init__(value)
-
     def __str__(self):
         return str(self.value)
 

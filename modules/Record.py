@@ -41,8 +41,7 @@ class Record:
 
     def edit_email(self, new_email: str):
         if self.email is None:
-            self.email = Email(new_email)
-            return True
+            return False
 
         self.email = Email(new_email)
         return True
@@ -51,6 +50,9 @@ class Record:
         self.address = Address(value)
 
     def edit_address(self, address: str):
+        if self.address is None:
+            return False
+
         self.address = Address(address)
         return True
 
