@@ -64,6 +64,7 @@ def main():
     print(Fore.CYAN + Style.BRIGHT + "       PERSONAL ASSISTANT")
     print(Fore.CYAN + Style.BRIGHT + "=" * 38)
     print(Fore.GREEN + "Welcome! Type a command to get started.")
+    print(Fore.CYAN + "Available commands: " + ", ".join(COMMANDS))
 
     while True:
         try:
