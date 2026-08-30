@@ -1,7 +1,6 @@
 from difflib import get_close_matches
 
-import commands
-import note_commands
+from commands import book_commands, note_commands
 from colorama import Fore, Style, init
 from tabulate import tabulate
 
@@ -83,33 +82,33 @@ def main():
         elif command == "help":
             print(show_help())
         elif command == "add":
-            print(commands.add_contact(args, book))
+            print(book_commands.add_contact(args, book))
         elif command == "change":
-            print(commands.change_contact(args, book))
+            print(book_commands.change_contact(args, book))
         elif command == "edit-name":
-            print(commands.edit_name(args, book))
+            print(book_commands.edit_name(args, book))
         elif command == "remove-contact":
-            print(commands.remove_contact(args, book))
+            print(book_commands.remove_contact(args, book))
         elif command == "phone":
-            print(commands.show_phone(args, book))
+            print(book_commands.show_phone(args, book))
         elif command == "all":
-            print(commands.show_all(book))
+            print(book_commands.show_all(book))
         elif command == "add-birthday":
-            print(commands.add_birthday(args, book))
+            print(book_commands.add_birthday(args, book))
         elif command == "show-birthday":
-            print(commands.show_birthday(args, book))
+            print(book_commands.show_birthday(args, book))
         elif command == "birthdays":
-            print(commands.birthdays(args, book))
+            print(book_commands.birthdays(args, book))
         elif command == "search-contacts":
-            print(commands.search_contacts(args, book))
+            print(book_commands.search_contacts(args, book))
         elif command == "add-email":
-            print(commands.add_email(args, book))
+            print(book_commands.add_email(args, book))
         elif command == "edit-email":
-            print(commands.edit_email(args, book))
+            print(book_commands.edit_email(args, book))
         elif command == "add-address":
-            print(commands.add_address(args, book))
+            print(book_commands.add_address(args, book))
         elif command == "edit-address":
-            print(commands.edit_address(args, book))
+            print(book_commands.edit_address(args, book))
         elif command == "add-note":
             print(note_commands.add_note(args, notebook))
         elif command == "all-notes":
