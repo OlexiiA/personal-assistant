@@ -24,14 +24,14 @@ def add_note(args: list[str], note: NoteBook) -> str:
 
 @note_input_error
 def show_all_notes(note: NoteBook) -> str:
-    if not note.notes:
+    if not note:
         return Fore.RED + "No notes saved." + Style.RESET_ALL
 
     return make_notes_table(note.show_notes())
 
 @note_input_error
 def search_note(args: list[str], note: NoteBook) -> str:
-    if not note.notes:
+    if not note:
         return Fore.RED + "No notes saved." + Style.RESET_ALL
 
     text = " ".join(args)
