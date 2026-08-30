@@ -5,7 +5,6 @@ The current version manages contacts.
 This is a team project for the Neoversity Python Programming course.
 
 > Project status: in development. Version 0.1.0 has basic contact features.
-> The final project features are not complete yet.
 
 ## What the program can do
 
@@ -28,7 +27,7 @@ Main features:
 - [x] Edit and delete full contact records.
 - [x] Select the number of days for the birthday list.
 - [x] Add, search, edit, and delete text notes.
-- [ ] Save contacts and notes in the user's home folder.
+- [x] Save contacts and notes in the user's home folder.
 
 Optional features:
 
@@ -109,8 +108,6 @@ The program shows an error message for wrong input and continues to work.
 
 ## Data storage
 
-The current version saves contacts in `addressbook.pkl`.
-The file is created in the folder where you run the program.
+Contacts are saved in `addressbook.pkl` and notes in `notebook.pkl`.
+Both files are created in the `.personal-assistant` folder in your home directory.
 Data is saved when you use `exit`, `close`, `Ctrl+C`, or an end-of-file signal.
-
-The final version must save both contacts and notes in the user's home folder.
