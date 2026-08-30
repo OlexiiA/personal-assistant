@@ -46,5 +46,24 @@ class AddressBook(UserDict):
 
         return upcoming_birthdays
 
+    def search_records(self, text: str) -> list[Record]:
+        query = text.lower()
+        matches = []
+
+        for record in self.data.values():
+            fields = [record.name.value]
+            fields += [phone.value for phone in record.phones]
+
+            if record.email:
+                fields.append(record.email.value)
+
+            if record.address:
+                fields.append(record.address.value)
+
+            if any(query in field.lower() for field in fields):
+                matches.append(record)
+
+        return matches
+
     def __str__(self):
         return '\n'.join(str(record) for record in self.data.values())
