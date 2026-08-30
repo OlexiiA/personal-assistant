@@ -20,7 +20,7 @@ class Record:
             if p.value == phone:
                 self.phones[i] = Phone(new_phone)
                 return True
-        
+
         return False
 
     def remove_phone(self, phone: str):
@@ -45,7 +45,7 @@ class Record:
 
         self.email = Email(new_email)
         return True
-    
+
     def add_address(self, value: str):
         self.address = Address(value)
 

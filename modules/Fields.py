@@ -1,4 +1,3 @@
-import re
 from datetime import datetime
 import modules.Errors as AppErrors
 from pydantic import BaseModel, EmailStr, ValidationError
@@ -55,13 +54,10 @@ class Email(Field):
 
 class Address(Field):
     pass
-    
+
 class Note(Field):
     def __init__(self, value):
         super().__init__(value)
 
         if not value:
             raise AppErrors.IncorrectNoteText()
-
-        
-        
