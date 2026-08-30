@@ -30,13 +30,7 @@ Use a short branch name for your task, for example:
 ## 3. Run the program locally
 
 ```bash
-uv run python main.py
-```
-
-You can also use:
-
-```bash
-python3 main.py
+uv run perso
 ```
 
 Check your feature manually before you push it.

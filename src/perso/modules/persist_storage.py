@@ -1,14 +1,13 @@
 import pickle
-
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable, Union
 
-from modules.address_book import AddressBook
-from modules.note_book import NoteBook
+from perso.modules.address_book import AddressBook
+from perso.modules.note_book import NoteBook
 
-Storable = Union[AddressBook, NoteBook]
+Storable = AddressBook | NoteBook
 
-APP_DIR = Path.home() / ".personal-assistant"
+APP_DIR = Path.home() / ".perso"
 
 
 class PersistStorage:

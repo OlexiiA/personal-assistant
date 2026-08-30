@@ -1,7 +1,8 @@
 from tabulate import tabulate
-from decorators.note_input import note_input_error
-from modules.note_book import NoteBook
-from utils.text import error_message, success_message
+
+from perso.decorators.note_input import note_input_error
+from perso.modules.note_book import NoteBook
+from perso.utils.text import error_message, success_message
 
 
 def make_notes_table(notes) -> str:

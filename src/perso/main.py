@@ -1,14 +1,13 @@
 from difflib import get_close_matches
 
-from commands import book_commands, note_commands
 from colorama import Fore, Style, init
 from tabulate import tabulate
 
-from modules.address_book import AddressBook
-from modules.persist_storage import PersistStorage
-from modules.note_book import NoteBook
-from utils.text import error_message, success_message, warning_message
-
+from perso.commands import book_commands, note_commands
+from perso.modules.address_book import AddressBook
+from perso.modules.note_book import NoteBook
+from perso.modules.persist_storage import PersistStorage
+from perso.utils.text import error_message, success_message, warning_message
 
 COMMAND_EXAMPLES = [
     ("hello", "hello"),

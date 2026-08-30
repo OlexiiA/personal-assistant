@@ -1,6 +1,8 @@
 from datetime import datetime
-import modules.errors as AppErrors
+
 from pydantic import BaseModel, EmailStr, ValidationError
+
+import perso.modules.errors as AppErrors
 
 
 class Field:
