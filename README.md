@@ -28,6 +28,7 @@ Main features:
 - [x] Select the number of days for the birthday list.
 - [x] Add, search, edit, and delete text notes.
 - [x] Save contacts and notes in the user's home folder.
+- [x] Show the command menu once at startup.
 
 Optional features:
 
@@ -50,24 +51,36 @@ git clone https://github.com/OlexiiA/personal-assistant.git
 cd personal-assistant
 ```
 
+Install dependencies with [`uv`](https://docs.astral.sh/uv/):
+
+```bash
+uv sync
+```
+
+Without `uv`, install with `pip`:
+
+```bash
+pip install colorama "pydantic[email]" tabulate
+```
+
 ## Run the program
 
-On macOS or Linux:
+With `uv`:
+
+```bash
+uv run main.py
+```
+
+Without `uv`, on macOS or Linux:
 
 ```bash
 python3 main.py
 ```
 
-On Windows:
+Without `uv`, on Windows:
 
 ```bash
 python main.py
-```
-
-If you use `uv`, you can run:
-
-```bash
-uv run python main.py
 ```
 
 ## Commands
