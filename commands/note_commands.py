@@ -17,7 +17,7 @@ def make_notes_table(notes) -> str:
 
 @note_input_error
 def add_note(args: list[str], note: NoteBook) -> str:
-    text = args[0] if args else ""
+    text = " ".join(args)
     note.add_note(text)
 
     return success_message("Note added.")
