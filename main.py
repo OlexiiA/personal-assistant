@@ -62,6 +62,8 @@ def main():
             print(commands.show_birthday(args, book))
         elif command == "birthdays":
             print(commands.birthdays(args, book))
+        elif command == "search-contacts":
+            print(commands.search_contacts(args, book))
         elif command == "add-email":
             print(commands.add_email(args, book))
         elif command == "edit-email":
@@ -85,7 +87,7 @@ def main():
             print(Fore.YELLOW + "Available commands:")
             print("hello, add, change, edit-name, remove-contact, phone, all,")
             print("add-birthday, show-birthday,")
-            print("birthdays, add-email, edit-email, add-address, edit-address,")
+            print("birthdays, search-contacts, add-email, edit-email, add-address, edit-address,")
             print("add-note, all-notes, search-note, edit-note, remove-note, close, exit")
 
     book_storage.save(book)

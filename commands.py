@@ -165,6 +165,20 @@ def birthdays(args: list[str], book: AddressBook) -> str:
     return Fore.MAGENTA + table + Style.RESET_ALL
 
 @input_error
+def search_contacts(args: list[str], book: AddressBook) -> str:
+    text = " ".join(args)
+
+    if not text:
+        return Fore.RED + "Enter text to search for." + Style.RESET_ALL
+
+    matches = book.search_records(text)
+
+    if not matches:
+        return Fore.RED + "No contacts found." + Style.RESET_ALL
+
+    return make_contacts_table(matches)
+
+@input_error
 def add_email(args: list[str], book: AddressBook) -> str:
     name, email = args
 
