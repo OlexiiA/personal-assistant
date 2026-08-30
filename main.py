@@ -1,3 +1,5 @@
+from difflib import get_close_matches
+
 import commands
 import note_commands
 from colorama import Fore, Style, init
@@ -8,6 +10,14 @@ from modules.NoteBook import NoteBook
 
 
 init(autoreset=True)
+
+COMMANDS = [
+    "hello", "add", "change", "edit-name", "remove-contact", "phone", "all",
+    "add-birthday", "show-birthday", "birthdays", "search-contacts",
+    "add-email", "edit-email", "add-address", "edit-address",
+    "add-note", "all-notes", "search-note", "edit-note", "remove-note",
+    "close", "exit",
+]
 
 def parse_input(user_input: str) -> tuple[str, list[str]]:
     parts = user_input.split()
@@ -84,11 +94,16 @@ def main():
             print(note_commands.remove_note(args, notebook))
         else:
             print(Fore.RED + "Invalid command.")
-            print(Fore.YELLOW + "Available commands:")
-            print("hello, add, change, edit-name, remove-contact, phone, all,")
-            print("add-birthday, show-birthday,")
-            print("birthdays, search-contacts, add-email, edit-email, add-address, edit-address,")
-            print("add-note, all-notes, search-note, edit-note, remove-note, close, exit")
+
+            suggestions = get_close_matches(command, COMMANDS, n=1)
+            if suggestions:
+                print(Fore.YELLOW + f"Did you mean '{suggestions[0]}'?")
+            else:
+                print(Fore.YELLOW + "Available commands:")
+                print("hello, add, change, edit-name, remove-contact, phone, all,")
+                print("add-birthday, show-birthday,")
+                print("birthdays, search-contacts, add-email, edit-email, add-address, edit-address,")
+                print("add-note, all-notes, search-note, edit-note, remove-note, close, exit")
 
     book_storage.save(book)
     note_storage.save(notebook)

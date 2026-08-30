@@ -34,7 +34,7 @@ Optional features:
 
 - [ ] Add tags to notes.
 - [ ] Search and sort notes by tags.
-- [ ] Suggest the closest command when the user makes a typing mistake.
+- [x] Suggest the closest command when the user makes a typing mistake.
 
 ## Requirements
 
