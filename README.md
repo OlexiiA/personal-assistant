@@ -114,8 +114,13 @@ python main.py
 ## Input rules
 
 - Use one word for a contact name.
-- A phone number must have exactly 10 digits.
+- A phone number must have exactly 10 digits and contain digits only.
+- An email must be a valid email address.
 - Use `DD.MM.YYYY` for a birthday.
+- The number of days for `birthdays` must be a positive integer.
+- A note's text cannot be empty.
+- Search text for `search-note` must be at least 3 characters long.
+- A note ID for `edit-note` and `remove-note` must match an existing note.
 - Use a command from the table above.
 
 The program shows an error message for wrong input and continues to work.
