@@ -7,6 +7,7 @@ from tabulate import tabulate
 from modules.address_book import AddressBook
 from modules.persist_storage import PersistStorage
 from modules.note_book import NoteBook
+from utils.text import error_message, success_message, warning_message
 
 
 COMMAND_EXAMPLES = [
@@ -63,7 +64,7 @@ def main():
     print(Fore.CYAN + Style.BRIGHT + "=" * 38)
     print(Fore.CYAN + Style.BRIGHT + "       PERSONAL ASSISTANT")
     print(Fore.CYAN + Style.BRIGHT + "=" * 38)
-    print(Fore.GREEN + "Welcome! Type a command to get started.")
+    print(success_message("Welcome! Type a command to get started."))
     print(Fore.CYAN + "Available commands: " + ", ".join(COMMANDS))
 
     while True:
@@ -79,7 +80,7 @@ def main():
             print(Fore.MAGENTA + "Good bye!")
             break
         elif command == "hello":
-            print(Fore.GREEN + "How can I help you?")
+            print(success_message("How can I help you?"))
         elif command == "help":
             print(show_help())
         elif command == "add":
@@ -121,13 +122,13 @@ def main():
         elif command == 'remove-note':
             print(note_commands.remove_note(args, notebook))
         else:
-            print(Fore.RED + "Invalid command.")
+            print(error_message("Invalid command."))
 
             suggestions = get_close_matches(command, COMMANDS, n=1)
             if suggestions:
-                print(Fore.YELLOW + f"Did you mean '{suggestions[0]}'?")
+                print(warning_message(f"Did you mean '{suggestions[0]}'?"))
             else:
-                print(Fore.YELLOW + "Type 'help' to see available commands.")
+                print(warning_message("Type 'help' to see available commands."))
 
     book_storage.save(book)
     note_storage.save(notebook)
