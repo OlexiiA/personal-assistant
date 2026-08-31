@@ -1,5 +1,5 @@
-import modules.errors as AppErrors
-from utils.text import error_message
+import perso.modules.errors as AppErrors
+from perso.utils.text import error_message
 
 
 def input_error(func):

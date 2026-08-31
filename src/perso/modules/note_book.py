@@ -1,7 +1,8 @@
 from collections import UserDict
 
-import modules.errors as AppErrors
-from modules.fields import Note
+import perso.modules.errors as AppErrors
+from perso.modules.fields import Note
+
 
 class NoteBook(UserDict):
     def __init__(self):

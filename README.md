@@ -51,36 +51,49 @@ git clone https://github.com/OlexiiA/personal-assistant.git
 cd personal-assistant
 ```
 
-Install dependencies with [`uv`](https://docs.astral.sh/uv/):
+### Install as a command (recommended)
+
+Installs the `perso` command so it runs from any folder.
+
+With [`uv`](https://docs.astral.sh/uv/):
 
 ```bash
-uv sync
+uv tool install .
 ```
 
-Without `uv`, install with `pip`:
+Without `uv`, with `pip`:
 
 ```bash
-pip install colorama "pydantic[email]" tabulate
+pip install .
 ```
 
-## Run the program
+Then run it from anywhere:
+
+```bash
+perso
+```
+
+### Run without installing
 
 With `uv`:
 
 ```bash
-uv run main.py
+uv run perso
 ```
 
 Without `uv`, on macOS or Linux:
 
 ```bash
-python3 main.py
+pip install colorama "pydantic[email]" tabulate
+PYTHONPATH=src python3 -m perso.main
 ```
 
 Without `uv`, on Windows:
 
 ```bash
-python main.py
+pip install colorama "pydantic[email]" tabulate
+set PYTHONPATH=src
+python -m perso.main
 ```
 
 ## Commands
@@ -114,8 +127,13 @@ python main.py
 ## Input rules
 
 - Use one word for a contact name.
-- A phone number must have exactly 10 digits.
+- A phone number must have exactly 10 digits and contain digits only.
+- An email must be a valid email address.
 - Use `DD.MM.YYYY` for a birthday.
+- The number of days for `birthdays` must be a positive integer.
+- A note's text cannot be empty.
+- Search text for `search-note` must be at least 3 characters long.
+- A note ID for `edit-note` and `remove-note` must match an existing note.
 - Use a command from the table above.
 
 The program shows an error message for wrong input and continues to work.
@@ -123,5 +141,5 @@ The program shows an error message for wrong input and continues to work.
 ## Data storage
 
 Contacts are saved in `addressbook.pkl` and notes in `notebook.pkl`.
-Both files are created in the `.personal-assistant` folder in your home directory.
+Both files are created in the `.perso` folder in your home directory.
 Data is saved when you use `exit`, `close`, `Ctrl+C`, or an end-of-file signal.

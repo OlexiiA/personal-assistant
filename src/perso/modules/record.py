@@ -1,4 +1,4 @@
-from modules.fields import Name, Phone, Birthday, Email, Address
+from perso.modules.fields import Address, Birthday, Email, Name, Phone
 
 
 class Record:

@@ -1,9 +1,10 @@
 from colorama import Fore, Style
 from tabulate import tabulate
-from decorators.input import input_error
-from modules.address_book import AddressBook
-from modules.record import Record
-from utils.text import error_message, success_message
+
+from perso.decorators.input import input_error
+from perso.modules.address_book import AddressBook
+from perso.modules.record import Record
+from perso.utils.text import error_message, success_message
 
 
 def make_contacts_table(records: list[Record]) -> str:

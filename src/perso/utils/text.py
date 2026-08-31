@@ -1,5 +1,6 @@
 from colorama import Fore, Style
 
+
 def error_message(text: str) -> str:
     return Fore.RED + text + Style.RESET_ALL
 
